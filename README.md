@@ -12,3 +12,14 @@ Estamos desenvolvendo com carinho e ficamos felizes com sugestões e contribuiçõe
 - Execute `php artisan serve`
 - Acesse `http://localhost:8000/demo` para navegar pela demonstração guiada
 - Faça login com `admin@example.com` / `password` para o painel administrativo
+
+## Deploy automatizado (Windows)
+1. Copie o script `scripts/deploy-windows.ps1` para a VPS.
+2. Abra PowerShell como administrador e execute:
+   ```powershell
+   Set-ExecutionPolicy RemoteSigned -Scope Process -Force
+   .\deploy-windows.ps1 -MysqlRootPassword "SENHA_FORTE" -Port 80
+   ```
+3. Aguarde o término e acesse `http://SEU_IP/demo`.
+
+Ajuste parâmetros `-InstallDir`, `-RepoUrl` ou `-Port` se precisar.
