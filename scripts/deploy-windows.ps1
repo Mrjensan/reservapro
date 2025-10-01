@@ -171,7 +171,7 @@ Write-Info 'Atualizando .env com configurações básicas...'
 $envContent = Get-Content '.env'
 $envContent = $envContent -replace 'APP_ENV=local', 'APP_ENV=production'
 $envContent = $envContent -replace 'APP_DEBUG=true', 'APP_DEBUG=false'
-$envContent = $envContent -replace 'APP_URL=http://localhost', "APP_URL=http://localhost:$Port"
+$envContent = $envContent -replace 'APP_URL=http://localhost', "APP_URL=http://$((Invoke-RestMethod -Uri 'https://api.ipify.org?format=json').ip):$Port"
 $envContent = $envContent -replace 'DB_CONNECTION=sqlite', 'DB_CONNECTION=mysql'
 $envContent = $envContent -replace '# DB_HOST=127.0.0.1', 'DB_HOST=127.0.0.1'
 $envContent = $envContent -replace '# DB_PORT=3306', 'DB_PORT=3306'
