@@ -12,6 +12,3 @@ Estamos desenvolvendo com carinho e ficamos felizes com sugestões e contribuiçõe
 - Execute `php artisan serve`
 - Acesse `http://localhost:8000/demo` para navegar pela demonstração guiada
 - Faça login com `admin@example.com` / `password` para o painel administrativo
-
-## Deploy
-- Consulte `docs/DEPLOY_WINDOWS_VPS.md` para subir em Windows Server sem GUI
