@@ -171,7 +171,7 @@ Write-Info 'Atualizando .env com configurações básicas...'
 $envContent = Get-Content '.env'
 $envContent = $envContent -replace 'APP_ENV=local', 'APP_ENV=production'
 $envContent = $envContent -replace 'APP_DEBUG=true', 'APP_DEBUG=false'
-$envContent = $envContent -replace 'APP_URL=http://localhost', "APP_URL=http://$($env:COMPUTERNAME)"
+$envContent = $envContent -replace 'APP_URL=http://localhost', "APP_URL=http://localhost:$Port"
 $envContent = $envContent -replace 'DB_CONNECTION=sqlite', 'DB_CONNECTION=mysql'
 $envContent = $envContent -replace '# DB_HOST=127.0.0.1', 'DB_HOST=127.0.0.1'
 $envContent = $envContent -replace '# DB_PORT=3306', 'DB_PORT=3306'
@@ -203,8 +203,10 @@ $nssmService = 'ReservaPro'
 & $nssmPath install $nssmService $phpPath 'artisan' 'serve' --host=0.0.0.0 --port=$Port
 & $nssmPath set $nssmService AppDirectory $InstallDir
 & $nssmPath set $nssmService AppEnvironmentExtra "APP_ENV=production`nAPP_DEBUG=false"
-& $nssmPath set $nssmService AppStdout (Join-Path $InstallDir 'storage\logseservapro-stdout.log')
-& $nssmPath set $nssmService AppStderr (Join-Path $InstallDir 'storage\logseservapro-stderr.log')
+& $nssmPath set $nssmService AppStdout (Join-Path $InstallDir 'storage\logs
+eservapro-stdout.log')
+& $nssmPath set $nssmService AppStderr (Join-Path $InstallDir 'storage\logs
+eservapro-stderr.log')
 & $nssmPath start $nssmService
 
 Pop-Location
