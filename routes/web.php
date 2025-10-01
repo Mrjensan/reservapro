@@ -24,3 +24,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::post('bookings/{booking}/status', [AdminBookingController::class, 'updateStatus'])->name('bookings.status');
     Route::resource('bookings', AdminBookingController::class)->only(['index', 'show', 'destroy']);
 });
+
+Route::get('/demo', function () {
+    return view('demo');
+})->name('demo');
